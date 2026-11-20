@@ -14,7 +14,7 @@ export default function SiteHeader() {
   const routePath = includesBasePath
     ? pathname.slice(siteBasePath.length) || "/"
     : pathname;
-  const compact = routePath.startsWith("/fleet/");
+  const compact = /^\/fleet\/[^/]+\/?$/.test(routePath);
   const activePage =
     routePath === "/fleet"
       ? "fleet"
