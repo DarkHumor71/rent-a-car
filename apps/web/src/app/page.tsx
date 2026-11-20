@@ -1,6 +1,8 @@
 "use client";
 
+import Link from "next/link";
 import FooterContactDetails from "@/components/footer-contact-details";
+import { publicAssetPath } from "@/data/site-config";
 
 const cars = [
   {
@@ -44,9 +46,9 @@ export default function Home() {
             road ahead.
           </p>
           <div className="hero-actions">
-            <a className="primary-button" href="/fleet">
+            <Link className="primary-button" href="/fleet">
               Explore the fleet <span>→</span>
-            </a>
+            </Link>
           </div>
         </div>
         <div className="hero-visual">
@@ -160,7 +162,7 @@ export default function Home() {
         <a className="brand footer-brand" href="#">
           <img
             className="brand-logo"
-            src="/brand/infinity-logo.webp"
+            src={publicAssetPath("/brand/infinity-logo.webp")}
             alt="Infinity Group Lebanon"
           />
         </a>

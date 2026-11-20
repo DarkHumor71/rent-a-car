@@ -5,10 +5,17 @@ import { notFound } from "next/navigation";
 import EnquiryForm from "./enquiry-form";
 import { cars, categories } from "@/data/fleet";
 import FooterContactDetails from "@/components/footer-contact-details";
+import { publicAssetPath } from "@/data/site-config";
 
 type EnquiryPageProps = {
   params: Promise<{ slug: string }>;
 };
+
+export const dynamicParams = false;
+
+export function generateStaticParams() {
+  return cars.map((car) => ({ slug: car.slug }));
+}
 
 export async function generateMetadata({
   params,
@@ -85,7 +92,7 @@ export default async function EnquiryPage({ params }: EnquiryPageProps) {
         >
           <img
             className="brand-logo"
-            src="/brand/infinity-logo.webp"
+            src={publicAssetPath("/brand/infinity-logo.webp")}
             alt="Infinity Group Lebanon"
           />
         </Link>

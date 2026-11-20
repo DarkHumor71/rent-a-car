@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { cars, categories, type CategoryId } from "@/data/fleet";
 import FooterContactDetails from "@/components/footer-contact-details";
+import { publicAssetPath } from "@/data/site-config";
 
 export default function FleetPage() {
   const [selectedCategories, setSelectedCategories] = useState<CategoryId[]>(
@@ -159,7 +160,7 @@ export default function FleetPage() {
         >
           <img
             className="brand-logo"
-            src="/brand/infinity-logo.webp"
+            src={publicAssetPath("/brand/infinity-logo.webp")}
             alt="Infinity Group Lebanon"
           />
         </Link>

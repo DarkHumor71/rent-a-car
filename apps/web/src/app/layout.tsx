@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import "./globals.scss";
 import SiteHeader from "@/components/site-header";
+import { publicAssetPath } from "@/data/site-config";
 
 export const metadata: Metadata = {
   title: "Infinity Group | Car Rental Lebanon",
   description:
     "Premium car rental, airport pickup, and long-term mobility across Lebanon.",
   icons: {
-    icon: "/brand/favicon.ico",
+    icon: publicAssetPath("/brand/favicon.ico"),
   },
 };
 

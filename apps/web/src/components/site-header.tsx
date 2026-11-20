@@ -3,13 +3,24 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { publicAssetPath, siteBasePath } from "@/data/site-config";
 
 export default function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
-  const compact = pathname.startsWith("/fleet/");
+  const includesBasePath =
+    siteBasePath &&
+    (pathname === siteBasePath || pathname.startsWith(`${siteBasePath}/`));
+  const routePath = includesBasePath
+    ? pathname.slice(siteBasePath.length) || "/"
+    : pathname;
+  const compact = routePath.startsWith("/fleet/");
   const activePage =
-    pathname === "/fleet" ? "fleet" : pathname === "/contact" ? "contact" : "";
+    routePath === "/fleet"
+      ? "fleet"
+      : routePath === "/contact"
+        ? "contact"
+        : "";
 
   if (compact) {
     return (
@@ -17,7 +28,7 @@ export default function SiteHeader() {
         <Link className="brand" href="/" aria-label="Infinity Group home">
           <img
             className="brand-logo"
-            src="/brand/infinity-logo.webp"
+            src={publicAssetPath("/brand/infinity-logo.webp")}
             alt="Infinity Group Lebanon"
           />
         </Link>
@@ -33,7 +44,7 @@ export default function SiteHeader() {
       <Link className="brand" href="/" aria-label="Infinity Group home">
         <img
           className="brand-logo"
-          src="/brand/infinity-logo.webp"
+          src={publicAssetPath("/brand/infinity-logo.webp")}
           alt="Infinity Group Lebanon"
         />
       </Link>

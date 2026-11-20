@@ -4,6 +4,7 @@ import { type SubmitEvent } from "react";
 import Link from "next/link";
 import { whatsappNumber } from "@/data/contact";
 import FooterContactDetails from "@/components/footer-contact-details";
+import { publicAssetPath } from "@/data/site-config";
 export default function ContactPage() {
   function sendWhatsAppMessage(event: SubmitEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -206,7 +207,7 @@ export default function ContactPage() {
         >
           <img
             className="brand-logo"
-            src="/brand/infinity-logo.webp"
+            src={publicAssetPath("/brand/infinity-logo.webp")}
             alt="Infinity Group Lebanon"
           />
         </Link>
