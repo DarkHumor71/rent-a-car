@@ -1,0 +1,23 @@
+{
+  "name": "rent-a-car",
+  "version": "1.0.0",
+  "description": "car renting platform",
+  "keywords": [
+    "car"
+  ],
+  "homepage": "https://github.com/DarkHumor71/rent-a-car#readme",
+  "bugs": {
+    "url": "https://github.com/DarkHumor71/rent-a-car/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DarkHumor71/rent-a-car.git"
+  },
+  "license": "ISC",
+  "author": "Mohammad Youssef",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
