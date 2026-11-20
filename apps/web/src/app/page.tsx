@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { type SubmitEvent, useState } from "react";
 
 const cars = [
   {
@@ -30,7 +30,7 @@ export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
-  function submitRequest(event: FormEvent<HTMLFormElement>) {
+  function submitRequest(event: SubmitEvent<HTMLFormElement>) {
     event.preventDefault();
     setSubmitted(true);
   }
