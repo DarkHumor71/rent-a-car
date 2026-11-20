@@ -10,11 +10,14 @@ export default function FleetPage() {
   const [selectedCategories, setSelectedCategories] = useState<CategoryId[]>(
     [],
   );
+  const [availableOnly, setAvailableOnly] = useState(false);
   const filteredCars = cars.filter(
     (car) =>
-      selectedCategories.length === 0 ||
-      selectedCategories.includes(car.category),
+      (selectedCategories.length === 0 ||
+        selectedCategories.includes(car.category)) &&
+      (!availableOnly || car.available),
   );
+  const hasActiveFilters = selectedCategories.length > 0 || availableOnly;
 
   function toggleCategory(category: CategoryId) {
     setSelectedCategories((selected) =>
@@ -51,11 +54,14 @@ export default function FleetPage() {
               </p>
               <h2>Filter by type</h2>
             </div>
-            {selectedCategories.length > 0 && (
+            {hasActiveFilters && (
               <button
                 className="fleet-clear-filters"
                 type="button"
-                onClick={() => setSelectedCategories([])}
+                onClick={() => {
+                  setSelectedCategories([]);
+                  setAvailableOnly(false);
+                }}
               >
                 Clear
               </button>
@@ -73,6 +79,19 @@ export default function FleetPage() {
                 <span>{category.label}</span>
               </label>
             ))}
+          </fieldset>
+          <fieldset className="fleet-availability-filter">
+            <legend>Availability</legend>
+            <label className="fleet-filter-option">
+              <input
+                type="checkbox"
+                checked={availableOnly}
+                onChange={(event) =>
+                  setAvailableOnly(event.currentTarget.checked)
+                }
+              />
+              <span>Available</span>
+            </label>
           </fieldset>
         </aside>
 
@@ -123,7 +142,10 @@ export default function FleetPage() {
               <button
                 className="text-link"
                 type="button"
-                onClick={() => setSelectedCategories([])}
+                onClick={() => {
+                  setSelectedCategories([]);
+                  setAvailableOnly(false);
+                }}
               >
                 Show all cars <span>→</span>
               </button>
