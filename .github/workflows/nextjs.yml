@@ -2,9 +2,9 @@ name: Deploy Next.js to GitHub Pages
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "Github-deploy" ]
   pull_request:
-    branches: [ "master" ]
+    branches: [ "Github-deploy" ]
   workflow_dispatch:
 
 jobs:
