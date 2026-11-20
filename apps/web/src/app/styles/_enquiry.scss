@@ -1,0 +1,228 @@
+.car-enquiry-header {
+  grid-template-columns: 1fr auto;
+}
+
+.car-enquiry-back {
+  justify-self: end;
+  font-size: 14px;
+  font-weight: 600;
+
+  span {
+    margin-right: 8px;
+    color: #7b841d;
+  }
+}
+
+.car-enquiry-content {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(360px, 0.85fr);
+  align-items: start;
+  gap: 8%;
+  padding: 72px 10% 110px;
+}
+
+.car-enquiry-breadcrumb {
+  display: inline-flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  color: #74786f;
+  font-size: 13px;
+
+  span {
+    color: #a4a69e;
+  }
+}
+
+.car-enquiry-image {
+  height: 360px;
+  margin-bottom: 30px;
+  overflow: hidden;
+  background: #e2e0d9;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.car-enquiry-vehicle {
+  > .eyebrow {
+    margin-bottom: 16px;
+  }
+
+  h1 {
+    font-size: clamp(40px, 5vw, 64px);
+    line-height: 1.05;
+  }
+}
+
+.car-enquiry-description {
+  max-width: 470px;
+  margin: 20px 0 30px;
+  color: #656960;
+  line-height: 1.7;
+}
+
+.car-color {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 24px;
+  color: #656960;
+  font-size: 14px;
+
+  strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+}
+
+.car-color-swatch {
+  width: 16px;
+  height: 16px;
+  border: 1px solid rgba(23, 26, 24, 0.2);
+  border-radius: 50%;
+}
+
+.car-enquiry-price {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+
+  > span {
+    color: #74786f;
+    font-size: 13px;
+  }
+
+  strong {
+    font-size: 24px;
+  }
+
+  small {
+    margin-left: 4px;
+    color: #74786f;
+    font-size: 13px;
+    font-weight: 400;
+  }
+}
+
+.car-enquiry-form {
+  padding: 34px;
+  background: white;
+
+  > .eyebrow {
+    margin-bottom: 15px;
+  }
+
+  h2 {
+    font-size: 31px;
+    line-height: 1.1;
+    letter-spacing: -0.045em;
+  }
+
+  form {
+    display: grid;
+    gap: 18px;
+    margin-top: 25px;
+  }
+
+  label {
+    display: grid;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  input:not([type="checkbox"]),
+  textarea {
+    width: 100%;
+    min-width: 0;
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    background: var(--cream);
+    padding: 12px 13px;
+    color: var(--ink);
+    outline-color: #858b37;
+    font: inherit;
+    font-weight: 400;
+  }
+
+  textarea {
+    resize: vertical;
+  }
+
+  .primary-button {
+    width: 100%;
+  }
+}
+
+.car-enquiry-note {
+  margin: 11px 0 0;
+  color: #74786f;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.car-enquiry-dates {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.car-enquiry-error {
+  margin: -10px 0 0;
+  color: #a43225;
+  font-size: 13px;
+}
+
+.optional-label {
+  color: #74786f;
+  font-weight: 400;
+}
+
+.car-enquiry-form .car-enquiry-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: #656960;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.5;
+
+  input {
+    flex: 0 0 auto;
+    width: 16px;
+    height: 16px;
+    margin: 1px 0 0;
+    accent-color: var(--green);
+  }
+}
+
+@media (max-width: 900px) {
+  .car-enquiry-content {
+    grid-template-columns: 1fr;
+    gap: 45px;
+    padding: 60px 7% 75px;
+  }
+
+  .car-enquiry-image {
+    height: 320px;
+  }
+}
+
+@media (max-width: 560px) {
+  .car-enquiry-image {
+    height: 240px;
+  }
+
+  .car-enquiry-form {
+    padding: 26px 20px;
+  }
+
+  .car-enquiry-dates {
+    grid-template-columns: 1fr;
+  }
+}
