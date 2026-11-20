@@ -1,0 +1,52 @@
+.services-section {
+  min-height: 520px;
+  display: grid;
+  grid-template-columns: 44% 56%;
+  background: var(--green);
+  color: white;
+
+  h2 {
+    font-size: clamp(44px, 4.5vw, 68px);
+  }
+}
+
+.services-copy {
+  padding: 100px 13%;
+  background:
+    linear-gradient(rgba(38, 55, 46, 0.82), rgba(38, 55, 46, 0.82)),
+    url("https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1000&q=85")
+      center/cover;
+}
+
+.service-list {
+  padding: 55px 10% 55px 8%;
+
+  article {
+    min-height: 136px;
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+
+    &:last-child {
+      border-bottom: 0;
+    }
+
+    > span {
+      color: var(--lime);
+      font-size: 11px;
+    }
+  }
+
+  h3 {
+    margin: 0 0 8px;
+    font-size: 20px;
+  }
+
+  p {
+    margin: 0;
+    color: #bac3bb;
+    line-height: 1.6;
+    font-size: 14px;
+  }
+}
