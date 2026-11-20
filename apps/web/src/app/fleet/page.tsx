@@ -74,9 +74,6 @@ export default function FleetPage() {
               </label>
             ))}
           </fieldset>
-          <p className="fleet-filter-hint">
-            Choose one or more types. Leave all unchecked to see every car.
-          </p>
         </aside>
 
         <div className="fleet-results">
@@ -90,29 +87,32 @@ export default function FleetPage() {
             <div className="fleet-listing-grid">
               {filteredCars.map((car) => (
                 <article className="fleet-listing-card" key={car.name}>
-                  <div className="fleet-listing-image">
-                    <img src={car.image} alt={car.name} />
-                  </div>
-                  <div className="fleet-listing-info">
-                    <div className="fleet-listing-meta">
-                      <div>
-                        <h3>{car.name}</h3>
-                      </div>
-                      <div className="fleet-listing-price">
-                        <small>from</small>
-                        <strong>
-                          {car.price}
-                          <span>/day</span>
-                        </strong>
-                      </div>
+                  <Link
+                    className="fleet-listing-card-link"
+                    href={`/fleet/${car.slug}`}
+                    aria-label={`View ${car.name} and enquire`}
+                  >
+                    <div className="fleet-listing-image">
+                      <img src={car.image} alt={car.name} />
                     </div>
-                    <Link
-                      className="fleet-reserve-link"
-                      href={`/fleet/${car.slug}`}
-                    >
-                      Enquire about this car <span>→</span>
-                    </Link>
-                  </div>
+                    <div className="fleet-listing-info">
+                      <div className="fleet-listing-meta">
+                        <div>
+                          <h3>{car.name}</h3>
+                        </div>
+                        <div className="fleet-listing-price">
+                          <small>from</small>
+                          <strong>
+                            {car.price}
+                            <span>/day</span>
+                          </strong>
+                        </div>
+                      </div>
+                      <span className="fleet-reserve-link">
+                        Enquire about this car <span>→</span>
+                      </span>
+                    </div>
+                  </Link>
                 </article>
               ))}
             </div>

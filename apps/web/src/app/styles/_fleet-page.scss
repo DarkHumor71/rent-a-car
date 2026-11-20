@@ -126,8 +126,20 @@
   min-width: 0;
   background: white;
 
-  &:hover .fleet-listing-image img {
+  &:hover .fleet-listing-image img,
+  &:focus-within .fleet-listing-image img {
     transform: scale(1.025);
+  }
+}
+
+.fleet-listing-card-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+
+  &:focus-visible {
+    outline: 2px solid var(--green);
+    outline-offset: 3px;
   }
 }
 
