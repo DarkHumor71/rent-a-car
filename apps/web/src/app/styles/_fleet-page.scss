@@ -36,6 +36,21 @@
     border: 0;
   }
 
+  .fleet-availability-filter {
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+
+    legend {
+      padding: 0;
+      color: #74786f;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+  }
+
   .visually-hidden {
     position: absolute;
     width: 1px;

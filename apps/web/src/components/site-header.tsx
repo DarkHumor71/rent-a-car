@@ -1,18 +1,15 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 
-type SiteHeaderProps = {
-  activePage?: "fleet" | "contact";
-  compact?: boolean;
-};
-
-export default function SiteHeader({
-  activePage,
-  compact = false,
-}: SiteHeaderProps) {
+export default function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const compact = pathname.startsWith("/fleet/");
+  const activePage =
+    pathname === "/fleet" ? "fleet" : pathname === "/contact" ? "contact" : "";
 
   if (compact) {
     return (

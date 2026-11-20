@@ -2,7 +2,6 @@
 
 import { type SubmitEvent } from "react";
 import Link from "next/link";
-import SiteHeader from "@/components/site-header";
 import { whatsappNumber } from "@/data/contact";
 import FooterContactDetails from "@/components/footer-contact-details";
 export default function ContactPage() {
@@ -23,8 +22,6 @@ export default function ContactPage() {
 
   return (
     <main className="contact-page">
-      <SiteHeader activePage="contact" />
-
       <section className="contact-hero">
         <div className="contact-hero-copy">
           <p className="eyebrow">

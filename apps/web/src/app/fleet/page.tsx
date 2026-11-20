@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { useState } from "react";
 import { cars, categories, type CategoryId } from "@/data/fleet";
-import SiteHeader from "@/components/site-header";
 import FooterContactDetails from "@/components/footer-contact-details";
 
 export default function FleetPage() {
@@ -29,8 +28,6 @@ export default function FleetPage() {
 
   return (
     <main className="fleet-page">
-      <SiteHeader activePage="fleet" />
-
       <section className="fleet-page-intro">
         <p className="eyebrow">
           <span /> The Infinity fleet

@@ -4,7 +4,6 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import EnquiryForm from "./enquiry-form";
 import { cars, categories } from "@/data/fleet";
-import SiteHeader from "@/components/site-header";
 import FooterContactDetails from "@/components/footer-contact-details";
 
 type EnquiryPageProps = {
@@ -36,8 +35,6 @@ export default async function EnquiryPage({ params }: EnquiryPageProps) {
 
   return (
     <main className="car-enquiry-page">
-      <SiteHeader compact />
-
       <section className="car-enquiry-content">
         <div className="car-enquiry-vehicle">
           <Link className="car-enquiry-breadcrumb" href="/fleet">

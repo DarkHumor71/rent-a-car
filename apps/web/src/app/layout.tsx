@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.scss";
-import SiteHeader from "../components/site-header";
+import SiteHeader from "@/components/site-header";
+
 export const metadata: Metadata = {
   title: "Infinity Group | Car Rental Lebanon",
   description:
@@ -15,8 +16,10 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" data-scroll-behavior="smooth">
-      <SiteHeader />
-      <body>{children}</body>
+      <body>
+        <SiteHeader />
+        {children}
+      </body>
     </html>
   );
 }
