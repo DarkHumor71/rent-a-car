@@ -1,6 +1,6 @@
 "use client";
 
-import { type SubmitEvent, useState } from "react";
+import FooterContactDetails from "@/components/footer-contact-details";
 
 const cars = [
   {
@@ -27,51 +27,8 @@ const cars = [
 ];
 
 export default function Home() {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
-
-  function submitRequest(event: SubmitEvent<HTMLFormElement>) {
-    event.preventDefault();
-    setSubmitted(true);
-  }
-
   return (
     <main>
-      <header className="nav-shell">
-        <a className="brand" href="#" aria-label="Infinity Group home">
-          <img
-            className="brand-logo"
-            src="/brand/infinity-logo.webp"
-            alt="Infinity Group Lebanon"
-          />
-        </a>
-        <button
-          className="menu-button"
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle menu"
-        >
-          <span />
-          <span />
-        </button>
-        <nav
-          className={menuOpen ? "nav-links open" : "nav-links"}
-          aria-label="Main navigation"
-        >
-          <a href="#fleet" onClick={() => setMenuOpen(false)}>
-            Fleet
-          </a>
-          <a href="#services" onClick={() => setMenuOpen(false)}>
-            Services
-          </a>
-          <a href="#contact" onClick={() => setMenuOpen(false)}>
-            Contact
-          </a>
-        </nav>
-        <a className="nav-cta" href="#request">
-          Reserve <span>↗</span>
-        </a>
-      </header>
-
       <section className="hero">
         <div className="hero-copy">
           <p className="eyebrow">
@@ -87,11 +44,8 @@ export default function Home() {
             road ahead.
           </p>
           <div className="hero-actions">
-            <a className="primary-button" href="#fleet">
+            <a className="primary-button" href="/fleet">
               Explore the fleet <span>→</span>
-            </a>
-            <a className="text-link" href="#request">
-              Plan your trip <span>↗</span>
             </a>
           </div>
         </div>
@@ -202,61 +156,6 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="request-section" id="request">
-        <div>
-          <p className="eyebrow">
-            <span /> Reservation
-          </p>
-          <h2>
-            Where will you
-            <br />
-            <em>go next?</em>
-          </h2>
-        </div>
-        {submitted ? (
-          <div className="success-message">
-            <span>✓</span>
-            <h3>Request received</h3>
-            <p>Our team will contact you shortly.</p>
-          </div>
-        ) : (
-          <form onSubmit={submitRequest}>
-            <label>
-              Full name
-              <input required name="name" placeholder="Your name" />
-            </label>
-            <label>
-              Phone or email
-              <input required name="contact" placeholder="+961 00 000 000" />
-            </label>
-            <label>
-              Preferred vehicle
-              <select name="vehicle" defaultValue="">
-                <option value="" disabled>
-                  Select vehicle
-                </option>
-                <option>Executive</option>
-                <option>Premium</option>
-                <option>SUV</option>
-              </select>
-            </label>
-            <div className="date-row">
-              <label>
-                Pickup date
-                <input required name="pickup" type="date" />
-              </label>
-              <label>
-                Return date
-                <input required name="return" type="date" />
-              </label>
-            </div>
-            <button type="submit" className="primary-button">
-              Send request <span>→</span>
-            </button>
-          </form>
-        )}
-      </section>
-
       <footer id="contact">
         <a className="brand footer-brand" href="#">
           <img
@@ -265,14 +164,7 @@ export default function Home() {
             alt="Infinity Group Lebanon"
           />
         </a>
-        <div>
-          <small>Visit us</small>
-          <p>Beirut, Lebanon</p>
-        </div>
-        <div>
-          <small>Call us</small>
-          <p>+961 3 794 730</p>
-        </div>
+        <FooterContactDetails />
         <a className="back-top" href="#">
           ↑
         </a>
