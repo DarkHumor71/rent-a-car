@@ -54,6 +54,7 @@ export default function Home() {
         <div className="hero-visual">
           <div className="image-frame">
             <img
+              fetchPriority="high"
               src="https://images.unsplash.com/photo-1504215680853-026ed2a45def?auto=format&fit=crop&w=1800&q=90"
               alt="Premium car on a coastal road"
             />
