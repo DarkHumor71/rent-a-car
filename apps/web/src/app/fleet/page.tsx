@@ -160,7 +160,7 @@ export default function FleetPage() {
         >
           <img
             className="brand-logo"
-            src={publicAssetPath("/brand/infinity-logo.webp")}
+            src={publicAssetPath("/brand/Infinity-Logo.webp")}
             alt="Infinity Group Lebanon"
           />
         </Link>

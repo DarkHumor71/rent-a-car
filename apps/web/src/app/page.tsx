@@ -162,7 +162,7 @@ export default function Home() {
         <a className="brand footer-brand" href="#">
           <img
             className="brand-logo"
-            src={publicAssetPath("/brand/infinity-logo.webp")}
+            src={publicAssetPath("/brand/Infinity-Logo.webp")}
             alt="Infinity Group Lebanon"
           />
         </a>

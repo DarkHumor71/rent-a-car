@@ -92,7 +92,7 @@ export default async function EnquiryPage({ params }: EnquiryPageProps) {
         >
           <img
             className="brand-logo"
-            src={publicAssetPath("/brand/infinity-logo.webp")}
+            src={publicAssetPath("/brand/Infinity-Logo.webp")}
             alt="Infinity Group Lebanon"
           />
         </Link>
