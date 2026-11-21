@@ -14,6 +14,9 @@ export default function SiteHeader() {
   const routePath = includesBasePath
     ? pathname.slice(siteBasePath.length) || "/"
     : pathname;
+  if (routePath.startsWith("/ig-management-portal")) {
+    return null;
+  }
   const compact = /^\/fleet\/[^/]+\/?$/.test(routePath);
   const activePage =
     routePath === "/fleet"

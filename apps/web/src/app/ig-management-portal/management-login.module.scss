@@ -1,0 +1,269 @@
+.managementLogin {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: minmax(420px, 43%) 1fr;
+  background: var(--cream);
+}
+
+.managementLoginPanel {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 42px clamp(36px, 5vw, 76px) 28px;
+  background: #f8f7f2;
+  border-right: 1px solid var(--line);
+}
+
+.managementLoginBrand {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  min-height: 42px;
+}
+
+.managementLoginBrand a {
+  display: inline-flex;
+}
+
+.managementLoginLogo {
+  width: 126px;
+  height: auto;
+  object-fit: contain;
+}
+
+.managementLoginBrand span {
+  color: #73786f;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.managementLoginContent {
+  width: min(100%, 430px);
+  margin: auto;
+  padding: 52px 0;
+}
+
+.managementLoginKicker {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 20px;
+  color: #687052;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+
+  span {
+    width: 28px;
+    height: 1px;
+    background: #687052;
+  }
+}
+
+.managementLoginContent h1 {
+  margin: 0 0 14px;
+  font-size: clamp(46px, 5vw, 64px);
+  letter-spacing: -0.06em;
+  line-height: 1;
+}
+
+.managementLoginIntro {
+  margin: 0 0 38px;
+  color: #6b7068;
+  line-height: 1.65;
+}
+
+.managementLoginForm {
+  display: flex;
+  flex-direction: column;
+
+  label {
+    margin-bottom: 9px;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  input {
+    width: 100%;
+    height: 54px;
+    border: 1px solid #d9dad2;
+    border-radius: 2px;
+    outline: none;
+    background: var(--white);
+    color: var(--ink);
+    padding: 0 16px;
+    transition: border-color 160ms ease, box-shadow 160ms ease;
+  }
+
+  input:focus {
+    border-color: #7a8441;
+    box-shadow: 0 0 0 3px rgba(122, 132, 65, 0.12);
+  }
+
+  input::placeholder {
+    color: #9b9e96;
+  }
+}
+
+.managementPasswordHeading {
+  margin-top: 22px;
+}
+
+.managementPasswordField {
+  position: relative;
+
+  input {
+    padding-right: 64px;
+  }
+
+  button {
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    height: 38px;
+    border: 0;
+    background: transparent;
+    color: #687052;
+    padding: 0 10px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+  }
+}
+
+.managementSignIn {
+  min-height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 28px;
+  border: 0;
+  border-radius: 2px;
+  background: var(--green);
+  color: var(--white);
+  padding: 0 20px 0 22px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 160ms ease, transform 160ms ease;
+
+  span {
+    color: var(--lime);
+    font-size: 20px;
+  }
+
+  &:hover {
+    background: #1e2c24;
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+}
+
+.managementLoginStatus {
+  margin: 14px 0 0;
+  border-left: 2px solid #7a8441;
+  color: #64695e;
+  padding: 4px 0 4px 12px;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.managementLoginHelp {
+  margin: 24px 0 0;
+  color: #858981;
+  font-size: 12px;
+  text-align: center;
+}
+
+.managementLoginCopyright {
+  margin: 0;
+  color: #9a9d95;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+}
+
+.managementLoginVisual {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  background:
+    linear-gradient(145deg, rgba(23, 26, 24, 0.18), rgba(23, 26, 24, 0.72)),
+    url("https://images.unsplash.com/photo-1504215680853-026ed2a45def?auto=format&fit=crop&w=1800&q=90")
+      center / cover no-repeat;
+}
+
+.managementLoginVisual::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 55%, rgba(8, 12, 9, 0.48));
+}
+
+.managementLoginVisualCopy {
+  position: absolute;
+  z-index: 1;
+  left: clamp(36px, 6vw, 86px);
+  bottom: 58px;
+  color: var(--white);
+
+  p {
+    margin: 0 0 18px;
+    color: #dce2d5;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  h2 {
+    font-size: clamp(42px, 5vw, 72px);
+  }
+
+  em {
+    color: var(--lime);
+  }
+}
+
+@media (max-width: 900px) {
+  .managementLogin {
+    grid-template-columns: 1fr;
+  }
+
+  .managementLoginPanel {
+    min-height: 100vh;
+  }
+
+  .managementLoginVisual {
+    display: none;
+  }
+}
+
+@media (max-width: 520px) {
+  .managementLoginPanel {
+    padding: 28px 22px 20px;
+  }
+
+  .managementLoginBrand {
+    align-items: flex-start;
+  }
+
+  .managementLoginBrand span {
+    max-width: 100px;
+    white-space: normal;
+    text-align: right;
+  }
+
+  .managementLoginContent {
+    padding: 44px 0;
+  }
+
+  .managementLoginContent h1 {
+    font-size: 48px;
+  }
+}
