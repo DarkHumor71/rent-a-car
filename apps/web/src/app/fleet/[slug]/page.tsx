@@ -3,7 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import EnquiryForm from "./enquiry-form";
-import { cars, categories } from "@/data/fleet";
+import { categories } from "@/data/fleet";
+import { getCar } from "@/lib/db";
 import FooterContactDetails from "@/components/footer-contact-details";
 import { publicAssetPath } from "@/data/site-config";
 
@@ -11,17 +12,13 @@ type EnquiryPageProps = {
   params: Promise<{ slug: string }>;
 };
 
-export const dynamicParams = false;
-
-export function generateStaticParams() {
-  return cars.map((car) => ({ slug: car.slug }));
-}
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({
   params,
 }: EnquiryPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const car = cars.find((vehicle) => vehicle.slug === slug);
+  const car = await getCar(slug);
 
   return {
     title: car
@@ -32,7 +29,7 @@ export async function generateMetadata({
 
 export default async function EnquiryPage({ params }: EnquiryPageProps) {
   const { slug } = await params;
-  const car = cars.find((vehicle) => vehicle.slug === slug);
+  const car = await getCar(slug);
 
   if (!car) {
     notFound();
@@ -81,7 +78,7 @@ export default async function EnquiryPage({ params }: EnquiryPageProps) {
           </div>
         </div>
 
-        <EnquiryForm carName={car.name} />
+        <EnquiryForm carName={car.name} carSlug={car.slug} />
       </section>
 
       <footer>

@@ -5,13 +5,17 @@ import { whatsappNumber } from "@/data/contact";
 
 type EnquiryFormProps = {
   carName: string;
+  carSlug: string;
 };
 
-export default function EnquiryForm({ carName }: EnquiryFormProps) {
+export default function EnquiryForm({ carName, carSlug }: EnquiryFormProps) {
   const [dateError, setDateError] = useState("");
+  const [status, setStatus] = useState("");
+  const [submitting, setSubmitting] = useState(false);
 
-  function sendEnquiry(event: SubmitEvent<HTMLFormElement>) {
+  async function sendEnquiry(event: SubmitEvent<HTMLFormElement>) {
     event.preventDefault();
+    setStatus("");
 
     const formData = new FormData(event.currentTarget);
     const pickupDate = String(formData.get("pickup"));
@@ -23,6 +27,7 @@ export default function EnquiryForm({ carName }: EnquiryFormProps) {
     }
 
     setDateError("");
+    setSubmitting(true);
     const message = [
       "Hello Infinity Group, I’d like to enquire about a rental.",
       `Vehicle: ${carName}`,
@@ -34,8 +39,37 @@ export default function EnquiryForm({ carName }: EnquiryFormProps) {
       `Additional details: ${formData.get("message") || "None"}`,
     ].join("\n");
 
-    const query = new URLSearchParams({ text: message });
-    window.location.assign(`https://wa.me/${whatsappNumber}?${query}`);
+    try {
+      const response = await fetch("/api/enquiries", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          carSlug,
+          name: formData.get("name"),
+          contact: formData.get("contact"),
+          pickupDate,
+          returnDate,
+          location: formData.get("location"),
+          message: formData.get("message"),
+          consent: formData.get("consent") === "on",
+        }),
+      });
+
+      if (!response.ok) {
+        const result = (await response.json()) as { error?: string };
+        throw new Error(result.error ?? "Unable to save your enquiry.");
+      }
+
+      const query = new URLSearchParams({ text: message });
+      window.location.assign(`https://wa.me/${whatsappNumber}?${query}`);
+    } catch (error) {
+      setStatus(
+        error instanceof Error
+          ? error.message
+          : "Unable to save your enquiry. Please try again.",
+      );
+      setSubmitting(false);
+    }
   }
 
   return (
@@ -106,9 +140,14 @@ export default function EnquiryForm({ carName }: EnquiryFormProps) {
             enquiry.
           </span>
         </label>
-        <button type="submit" className="primary-button">
+        <button type="submit" className="primary-button" disabled={submitting}>
           Continue to WhatsApp <span>→</span>
         </button>
+        {status ? (
+          <p className="car-enquiry-error" role="alert">
+            {status}
+          </p>
+        ) : null}
       </form>
     </div>
   );

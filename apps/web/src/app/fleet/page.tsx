@@ -1,16 +1,48 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
-import { cars, categories, type CategoryId } from "@/data/fleet";
+import { useEffect, useState } from "react";
+import { categories, type CategoryId, type FleetCar } from "@/data/fleet";
 import FooterContactDetails from "@/components/footer-contact-details";
 import { publicAssetPath } from "@/data/site-config";
 
 export default function FleetPage() {
+  const [cars, setCars] = useState<FleetCar[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState("");
   const [selectedCategories, setSelectedCategories] = useState<CategoryId[]>(
     [],
   );
   const [availableOnly, setAvailableOnly] = useState(false);
+
+  useEffect(() => {
+    let active = true;
+
+    fetch("/api/cars")
+      .then(async (response) => {
+        if (!response.ok) {
+          throw new Error("Unable to load the fleet.");
+        }
+        return (await response.json()) as FleetCar[];
+      })
+      .then((fleet) => {
+        if (active) {
+          setCars(fleet);
+          setLoading(false);
+        }
+      })
+      .catch(() => {
+        if (active) {
+          setLoadError("The fleet could not be loaded. Please try again later.");
+          setLoading(false);
+        }
+      });
+
+    return () => {
+      active = false;
+    };
+  }, []);
+
   const filteredCars = cars.filter(
     (car) =>
       (selectedCategories.length === 0 ||
@@ -100,7 +132,11 @@ export default function FleetPage() {
               {filteredCars.length} {filteredCars.length === 1 ? "car" : "cars"}
             </span>
           </div>
-          {filteredCars.length > 0 ? (
+          {loading ? (
+            <p role="status">Loading the fleet…</p>
+          ) : loadError ? (
+            <p role="alert">{loadError}</p>
+          ) : filteredCars.length > 0 ? (
             <div className="fleet-listing-grid">
               {filteredCars.map((car) => (
                 <article className="fleet-listing-card" key={car.name}>

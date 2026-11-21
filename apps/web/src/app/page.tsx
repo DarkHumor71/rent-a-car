@@ -1,34 +1,13 @@
-"use client";
-
 import Link from "next/link";
 import FooterContactDetails from "@/components/footer-contact-details";
 import { publicAssetPath } from "@/data/site-config";
+import { listCars } from "@/lib/db";
 
-const cars = [
-  {
-    name: "Mercedes C 300",
-    className: "Executive",
-    price: "$85",
-    image:
-      "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=1200&q=85",
-  },
-  {
-    name: "BMW 530i",
-    className: "Premium",
-    price: "$92",
-    image:
-      "https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=1200&q=85",
-  },
-  {
-    name: "Range Rover Evoque",
-    className: "SUV",
-    price: "$110",
-    image:
-      "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?auto=format&fit=crop&w=1200&q=85",
-  },
-];
+export const dynamic = "force-dynamic";
 
-export default function Home() {
+export default async function Home() {
+  const cars = (await listCars()).slice(0, 3);
+
   return (
     <main>
       <section className="hero">
@@ -102,7 +81,7 @@ export default function Home() {
               </div>
               <div className="vehicle-meta">
                 <div>
-                  <small>{car.className}</small>
+                  <small>{car.category}</small>
                   <h3>{car.name}</h3>
                 </div>
                 <div className="price">

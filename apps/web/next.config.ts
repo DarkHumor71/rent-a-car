@@ -1,9 +1,12 @@
+import { loadEnvConfig } from "@next/env";
 import type { NextConfig } from "next";
+import { resolve } from "node:path";
+
+loadEnvConfig(resolve(process.cwd(), "../.."));
 
 const siteBasePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 const nextConfig: NextConfig = {
-  output: "export",
   basePath: siteBasePath,
   trailingSlash: true,
   images: {

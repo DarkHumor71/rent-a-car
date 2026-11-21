@@ -22,6 +22,11 @@
   "scripts": {
     "dev": "npm run dev --workspace=apps/web",
     "build": "npm run build --workspace=apps/web",
-    "start": "npm run start --workspace=apps/web"
+    "start": "npm run start --workspace=apps/web",
+    "db:migrate": "node --env-file-if-exists=.env.local --env-file-if-exists=.env scripts/migrate.mjs"
+  },
+  "dependencies": {
+    "@neon/config": "^1.14.6",
+    "@neon/env": "^2.1.9"
   }
 }
